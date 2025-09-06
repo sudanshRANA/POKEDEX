@@ -1,7 +1,37 @@
+body {
+    background-image: url('https://wallpapercave.com/wp/wp2754829.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive background for tablets and mobile */
+@media (max-width: 900px) {
+    body {
+        background-size: auto 100vh;
+        background-position: top center;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+    }
+}
+
 .pokemon-details-name {
     font-size: xx-large;
-    color: black;
+    color: #222;
     margin-top: 1rem;
+    animation: fadeInDown 0.7s;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .pokemon-details-name > span {
@@ -10,25 +40,115 @@
 
 .pokemon-details-types {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 2rem;
-    gap: 3rem;
+    gap: 1.2rem;
     font-size: larger;
+    animation: fadeIn 1s 0.3s backwards;
+    justify-content: center;
 }
 
 .pokemon-details-types div {
-    border: 1px solid gainsboro;
+    border: 1px solid #bdbdbd;
     border-radius: 15px;
-    padding: 1rem;
-    background-color: gainsboro;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.pokemon-details-types div:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
 }
 
 .pokemon-details-image {
     margin-top: 2rem;
     max-height: 200px;
+    animation: popIn 0.7s;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.09);
+    padding: 12px;
 }
 
 .pokemon-details-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fadeIn 0.8s;
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    border-radius: 24px;
+    padding: 2.5rem 1.2rem 2rem 1.2rem;
+    margin: 2rem auto;
+    max-width: 420px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+}
+
+.pokemon-details-wrapper ul {
+    margin-top: 1.5rem;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    animation: fadeIn 1.2s 0.2s backwards;
+}
+
+.pokemon-details-wrapper li {
+    background: #f5f7fa;
+    margin: 0.4rem 0;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    font-size: 1rem;
+    color: #444;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.pokemon-details-wrapper li:hover {
+    background: #e0eafc;
+    transform: scale(1.03);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.7);}
+    80% { opacity: 1; transform: scale(1.05);}
+    100% { opacity: 1; transform: scale(1);}
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .pokemon-details-wrapper {
+        padding: 1.2rem 0.3rem 1.2rem 0.3rem;
+        max-width: 98vw;
+        margin: 1rem 0.2rem;
+    }
+    .pokemon-details-name {
+        font-size: 1.2rem;
+        letter-spacing: 0.2rem;
+    }
+    .pokemon-details-types {
+        gap: 0.7rem;
+        font-size: 1rem;
+    }
+    .pokemon-details-image {
+        max-height: 120px;
+        padding: 6px;
+    }
 }
